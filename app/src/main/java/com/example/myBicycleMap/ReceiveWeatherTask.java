@@ -17,15 +17,10 @@ import static android.content.ContentValues.TAG;
 public class ReceiveWeatherTask extends AsyncTask<String, Void, JSONObject> {
 
     OnTaskCompleted otc;
-
     String msg;
 
     ReceiveWeatherTask(OnTaskCompleted otc){
         this.otc = otc;
-    }
-
-    public String getMsg() {
-        return msg;
     }
 
     @Override
