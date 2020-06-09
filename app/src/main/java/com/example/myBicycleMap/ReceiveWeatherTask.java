@@ -85,13 +85,11 @@ public class ReceiveWeatherTask extends AsyncTask<String, Void, JSONObject> {
                 e.printStackTrace();
             }
             description = transferWeather(description);
-            msg = description + " 습도 " + humidity +"%, 풍속 " + speed +"m/s" + " 온도 현재:"+nowTemp+" / 최저:"+ minTemp + " / 최고:" + maxTemp;
+            msg = "(" + description + ")\n 온도:" + nowTemp +"℃ \n습도:" + humidity +"% 풍속:" + speed +"m/s";
             Log.i("****",msg);
             otc.onComplete(msg);
         }
     }
-
-
 
     private String transferWeather(String weather ){
         weather = weather.toLowerCase();

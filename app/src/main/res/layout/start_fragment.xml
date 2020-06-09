@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.example.myBicycleMap.StartFragment">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutTmap"
+        android:layout_width="403dp"
+        android:layout_height="545dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDestination">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="105dp"
+        android:layout_height="40dp"
+        android:text="속도"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutTmap" />
+
+    <ImageButton
+        android:id="@+id/btnStop"
+        android:layout_width="86dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="56dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toEndOf="@+id/txtSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutTmap"
+        app:srcCompat="@drawable/ic_stop" />
+
+    <TextView
+        android:id="@+id/txtSpeed"
+        android:layout_width="105dp"
+        android:layout_height="36dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageButton
+        android:id="@+id/btnCafe"
+        android:layout_width="61dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toEndOf="@+id/btnStop"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutTmap"
+        app:srcCompat="@drawable/ic_coffee" />
+
+    <ImageButton
+        android:id="@+id/btnFix"
+        android:layout_width="61dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnCafe"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutTmap"
+        app:srcCompat="@drawable/ic_fix" />
+
+    <TextView
+        android:id="@+id/txtDestination"
+        android:layout_width="354dp"
+        android:layout_height="36dp"
+        android:text="목적지를 입력하세요"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnSearch"
+        android:layout_width="46dp"
+        android:layout_height="34dp"
+        android:src="@drawable/ic_search"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayoutTmap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtDestination"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

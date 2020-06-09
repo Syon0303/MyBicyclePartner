@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,16 +26,19 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import androidx.fragment.app.DialogFragment;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
 import static android.content.Context.LOCATION_SERVICE;
 
-public class SpeedometerFragment extends Fragment implements OnTaskCompleted{
+public class SpeedometerFragment extends Fragment implements OnTaskCompleted, View.OnClickListener{
 
     private GpsTracker gpsTracker;
     TextView txtWeatherMsg;
+    ImageButton btnStart;
 
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
     private static final int PERMISSIONS_REQUEST_CODE = 100;
@@ -55,7 +59,7 @@ public class SpeedometerFragment extends Fragment implements OnTaskCompleted{
         }else{
             checkRunTimePermission();
         }
-        TextView txtLocation = view.findViewById(R.id.txtLocation);
+
         gpsTracker = new GpsTracker (getContext());
         Location location = gpsTracker.getLocation();
 
@@ -63,15 +67,15 @@ public class SpeedometerFragment extends Fragment implements OnTaskCompleted{
         double longitude = location.getLongitude();
 
         Log.i("***", latitude + "***" + longitude);
-
-        String address = getCurrentAddress(latitude,longitude);
-        txtLocation.setText(address);
         Toast.makeText(getContext(),"현재위치 \n위도 " + latitude + "\n경도 " + longitude, Toast.LENGTH_LONG).show();
 
         getWeatherData(latitude, longitude);
 
         txtWeatherMsg = view.findViewById(R.id.txtWeatherMsg);
-        //Log.i("날씨", weatherMsg);
+        btnStart = view.findViewById(R.id.btnStart);
+
+        btnStart.setOnClickListener(this);
+
         return view;
     }
 
@@ -147,8 +151,7 @@ public class SpeedometerFragment extends Fragment implements OnTaskCompleted{
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("위치 서비스 비활성화");
-        builder.setMessage("앱을 사용하기 위해서는 위치 서비스가 필요합니다.\n"
-                + "위치 설정을 수정하실래요?");
+        builder.setMessage("위치 서비스 필요. \n" + "설정을 수정하시겠습니까?");
         builder.setCancelable(true);
         builder.setPositiveButton("설정", new DialogInterface.OnClickListener() {
             @Override
@@ -175,4 +178,14 @@ public class SpeedometerFragment extends Fragment implements OnTaskCompleted{
         txtWeatherMsg.setText(weatherMsg);
     }
 
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.btnStart :
+                StartFragment startFragment = new StartFragment();
+                startFragment.setStyle(DialogFragment.STYLE_NO_TITLE,android.R.style.Theme_Holo_Light);
+                startFragment.show(getFragmentManager(), StartFragment.TAG_START_DIALOG);
+                break;
+        }
+    }
 }
