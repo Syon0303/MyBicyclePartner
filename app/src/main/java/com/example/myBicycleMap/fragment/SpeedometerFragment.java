@@ -32,7 +32,7 @@ import com.example.myBicycleMap.GpsTracker;
 import com.example.myBicycleMap.OnTaskCompleted;
 import com.example.myBicycleMap.R;
 import com.example.myBicycleMap.ReceiveWeatherTask;
-import com.example.myBicycleMap.dialog.StartFragment;
+import com.example.myBicycleMap.dialog.StartDialogFragment;
 
 import java.io.IOException;
 import java.util.List;
@@ -187,9 +187,9 @@ public class SpeedometerFragment extends Fragment implements OnTaskCompleted, Vi
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.btnStart :
-                StartFragment startFragment = new StartFragment();
+                StartDialogFragment startFragment = new StartDialogFragment();
                 startFragment.setStyle(DialogFragment.STYLE_NO_TITLE,android.R.style.Theme_Holo_Light);
-                startFragment.show(getFragmentManager(), StartFragment.TAG_START_DIALOG);
+                startFragment.show(getFragmentManager(), StartDialogFragment.TAG_START_DIALOG);
                 break;
         }
     }

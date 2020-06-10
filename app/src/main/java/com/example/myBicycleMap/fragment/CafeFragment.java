@@ -24,7 +24,7 @@ import com.skt.Tmap.TMapView;
 
 import java.util.ArrayList;
 
-public class FixFragment extends Fragment {
+public class CafeFragment extends Fragment {
     private ArrayList<Fix> mArrayList;
     private FixAdapter mAdapter;
 
@@ -35,8 +35,8 @@ public class FixFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.tab_fix_fragment, null);
-        RecyclerView mRecyclerView = view.findViewById(R.id.recyclerview_fix_list);
+        View view = inflater.inflate(R.layout.tab_cafe_fragment, null);
+        RecyclerView mRecyclerView = view.findViewById(R.id.recyclerview_cafe_list);
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
@@ -47,13 +47,12 @@ public class FixFragment extends Fragment {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(), mLinearLayoutManager.getOrientation());
         mRecyclerView.addItemDecoration(dividerItemDecoration);
 
-        searchFix();
-
+        searchCafe();
 
         return view;
     }
 
-    private void searchFix(){
+    private void searchCafe(){
         TMapView tMapView;
 
         double latitude = 0;
@@ -71,29 +70,30 @@ public class FixFragment extends Fragment {
 
         final TMapPoint point = new TMapPoint (latitude, longitude);
 
-            tMapData.findAroundNamePOI(point, "bicycle", 30, 99, new TMapData.FindAroundNamePOIListenerCallback() {
-                @Override
-                public void onFindAroundNamePOI(ArrayList<TMapPOIItem> arrayList) {
+        tMapData.findAroundNamePOI(point, "cafe", 30, 99, new TMapData.FindAroundNamePOIListenerCallback() {
+            @Override
+            public void onFindAroundNamePOI(ArrayList<TMapPOIItem> arrayList) {
 
-                    for(int i=0; i<arrayList.size(); i++){
-                        TMapPOIItem item = arrayList.get(i);
+                for(int i=0; i<arrayList.size(); i++){
+                    TMapPOIItem item = arrayList.get(i);
 
-                        Fix fix = new Fix();
+                    Fix fix = new Fix();
 
-                        String dis = String.format("%.1f", item.getDistance(point)/1000);
-                        fix.setName(item.getPOIName());
-                        fix.setDistance(dis+"KM");
+                    String dis = String.format("%.1f", item.getDistance(point)/1000);
+                    fix.setName(item.getPOIName());
+                    fix.setDistance(dis+"KM");
 
-                        final Fix temp = fix;
+                    final Fix temp = fix;
 
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                mAdapter.addItem(temp);
-                            }
-                        });
-                    }
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mAdapter.addItem(temp);
+                        }
+                    });
                 }
-            });
+            }
+        });
     }
+
 }

@@ -6,13 +6,16 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 
 import com.example.myBicycleMap.R;
-import com.example.myBicycleMap.TabPagerAdapter;
+import com.example.myBicycleMap.Adapter.TabPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
