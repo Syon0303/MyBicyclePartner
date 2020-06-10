@@ -1,10 +1,12 @@
-package com.example.myBicycleMap;
+package com.example.myBicycleMap.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.example.myBicycleMap.R;
+import com.example.myBicycleMap.TabPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {

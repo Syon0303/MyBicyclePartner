@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.example.myBicycleMap.fragment.CoffeeFragment;
+import com.example.myBicycleMap.fragment.FixFragment;
+import com.example.myBicycleMap.fragment.SpeedometerFragment;
+
 public class TabPagerAdapter extends FragmentStatePagerAdapter {
 
     private int tabCount;

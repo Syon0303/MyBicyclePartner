@@ -1,4 +1,4 @@
-package com.example.myBicycleMap;
+package com.example.myBicycleMap.fragment;
 
 
 import android.Manifest;
@@ -28,6 +28,12 @@ import androidx.fragment.app.Fragment;
 
 import androidx.fragment.app.DialogFragment;
 
+import com.example.myBicycleMap.GpsTracker;
+import com.example.myBicycleMap.OnTaskCompleted;
+import com.example.myBicycleMap.R;
+import com.example.myBicycleMap.ReceiveWeatherTask;
+import com.example.myBicycleMap.dialog.StartFragment;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -47,6 +53,13 @@ public class SpeedometerFragment extends Fragment implements OnTaskCompleted, Vi
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //위치 정보 가져왔는지 체크
+        if(!checkLocationServicesStatus()) {
+            showDialogForLocationServiceSetting();
+        }else{
+            checkRunTimePermission();
+        }
     }
 
     @Nullable
@@ -54,26 +67,18 @@ public class SpeedometerFragment extends Fragment implements OnTaskCompleted, Vi
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.tab_speedometer_fragment, null);
 
-        if(!checkLocationServicesStatus()) {
-            showDialogForLocationServiceSetting();
-        }else{
-            checkRunTimePermission();
-        }
-
+        //현재 위도 경도 가져옴
         gpsTracker = new GpsTracker (getContext());
         Location location = gpsTracker.getLocation();
-
         double latitude = location.getLatitude();
         double longitude = location.getLongitude();
+        Log.i("hi", latitude + " " + longitude);
 
-        Log.i("***", latitude + "***" + longitude);
-        Toast.makeText(getContext(),"현재위치 \n위도 " + latitude + "\n경도 " + longitude, Toast.LENGTH_LONG).show();
-
+        //위도와 경도로 날씨 정보 받아옴
         getWeatherData(latitude, longitude);
-
         txtWeatherMsg = view.findViewById(R.id.txtWeatherMsg);
-        btnStart = view.findViewById(R.id.btnStart);
 
+        btnStart = view.findViewById(R.id.btnStart);
         btnStart.setOnClickListener(this);
 
         return view;

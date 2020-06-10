@@ -19,7 +19,7 @@ public class ReceiveWeatherTask extends AsyncTask<String, Void, JSONObject> {
     OnTaskCompleted otc;
     String msg;
 
-    ReceiveWeatherTask(OnTaskCompleted otc){
+    public ReceiveWeatherTask(OnTaskCompleted otc){
         this.otc = otc;
     }
 
