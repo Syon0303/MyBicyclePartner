@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myBicycleMap.Adapter.FixAdapter;
-import com.example.myBicycleMap.GpsTracker;
+import com.example.myBicycleMap.service.GpsTracker;
 import com.example.myBicycleMap.R;
 import com.example.myBicycleMap.model.Fix;
 import com.skt.Tmap.TMapData;

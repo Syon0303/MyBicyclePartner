@@ -1,4 +1,4 @@
-package com.example.myBicycleMap;
+package com.example.myBicycleMap.service;
 
 import android.Manifest;
 import android.app.Service;
@@ -12,8 +12,6 @@ import android.os.Bundle;
 import android.os.IBinder;
 import androidx.core.content.ContextCompat;
 import android.util.Log;
-
-import static android.content.Context.LOCATION_SERVICE;
 
 public class GpsTracker extends Service implements LocationListener{
 

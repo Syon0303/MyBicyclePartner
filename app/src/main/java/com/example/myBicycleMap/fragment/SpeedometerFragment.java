@@ -28,10 +28,10 @@ import androidx.fragment.app.Fragment;
 
 import androidx.fragment.app.DialogFragment;
 
-import com.example.myBicycleMap.GpsTracker;
-import com.example.myBicycleMap.OnTaskCompleted;
+import com.example.myBicycleMap.service.GpsTracker;
+import com.example.myBicycleMap.service.OnTaskCompleted;
 import com.example.myBicycleMap.R;
-import com.example.myBicycleMap.ReceiveWeatherTask;
+import com.example.myBicycleMap.service.GetWeatherTask;
 import com.example.myBicycleMap.dialog.StartDialogFragment;
 
 import java.io.IOException;
@@ -86,7 +86,7 @@ public class SpeedometerFragment extends Fragment implements OnTaskCompleted, Vi
 
     private void getWeatherData(double latitude, double longitude){
         String url = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=metric&appid=8b7c6f88e9a87a0ff1c672685ff27dd8";
-        ReceiveWeatherTask receiveUseTask = new ReceiveWeatherTask(this);
+        GetWeatherTask receiveUseTask = new GetWeatherTask(this);
         receiveUseTask.execute(url);
     }
 
@@ -176,7 +176,7 @@ public class SpeedometerFragment extends Fragment implements OnTaskCompleted, Vi
     }
     //여기까지 날씨 요청을 위한 위도 및 경도 가져오는 함수
 
-    //SpeedometerFragment 의 setWeatherMsg 가 ReceiveWeatherTask 가 끝나기 전에 계속 먼저 실행되어서 ReceiveWeatherTask 에 SpeedometerFragment 를 보내버렸음.
+    //SpeedometerFragment 의 setWeatherMsg 가 ReceiveWeatherTask 가 끝나기 전에 계속 먼저 실행되어서 GetWeatherTask 에 SpeedometerFragment 를 보내버렸음.
     @Override
     public void onComplete(String msg) {
         this.weatherMsg = msg;

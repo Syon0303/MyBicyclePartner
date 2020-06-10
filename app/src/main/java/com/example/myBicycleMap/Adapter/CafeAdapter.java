@@ -23,7 +23,7 @@ public class CafeAdapter extends RecyclerView.Adapter<CafeAdapter.CafeViewHolder
         notifyDataSetChanged();
     }
 
-    public class CafeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class CafeViewHolder extends RecyclerView.ViewHolder{
         protected TextView name;
         protected TextView distance;
 

@@ -1,4 +1,4 @@
-package com.example.myBicycleMap;
+package com.example.myBicycleMap.service;
 
 public interface OnTaskCompleted {
     void onComplete(String msg);

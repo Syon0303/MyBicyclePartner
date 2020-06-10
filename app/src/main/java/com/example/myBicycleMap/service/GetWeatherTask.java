@@ -1,4 +1,4 @@
-package com.example.myBicycleMap;
+package com.example.myBicycleMap.service;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -14,12 +14,12 @@ import java.net.URL;
 
 import static android.content.ContentValues.TAG;
 
-public class ReceiveWeatherTask extends AsyncTask<String, Void, JSONObject> {
+public class GetWeatherTask extends AsyncTask<String, Void, JSONObject> {
 
     OnTaskCompleted otc;
     String msg;
 
-    public ReceiveWeatherTask(OnTaskCompleted otc){
+    public GetWeatherTask(OnTaskCompleted otc){
         this.otc = otc;
     }
 
@@ -61,24 +61,15 @@ public class ReceiveWeatherTask extends AsyncTask<String, Void, JSONObject> {
         Log.i(TAG, result.toString());
         if( result != null ){
 
-            String iconName = "";
             String nowTemp = "";
-            String maxTemp = "";
-            String minTemp = "";
-
             String humidity = "";
             String speed = "";
-            String main = "";
             String description = "";
 
             try {
-                iconName = result.getJSONArray("weather").getJSONObject(0).getString("icon");
                 nowTemp = result.getJSONObject("main").getString("temp");
                 humidity = result.getJSONObject("main").getString("humidity");
-                minTemp = result.getJSONObject("main").getString("temp_min");
-                maxTemp = result.getJSONObject("main").getString("temp_max");
                 speed = result.getJSONObject("wind").getString("speed");
-                main = result.getJSONArray("weather").getJSONObject(0).getString("main");
                 description = result.getJSONArray("weather").getJSONObject(0).getString("description");
             }
             catch (JSONException e ){

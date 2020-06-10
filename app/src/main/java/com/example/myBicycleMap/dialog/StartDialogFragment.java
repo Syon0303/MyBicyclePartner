@@ -22,9 +22,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 
-import com.example.myBicycleMap.GpsTracker;
+import com.example.myBicycleMap.service.GpsTracker;
 import com.example.myBicycleMap.R;
 import com.skt.Tmap.TMapData;
 import com.skt.Tmap.TMapGpsManager;
