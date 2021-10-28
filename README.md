@@ -3,7 +3,7 @@
 
 2021.10.29 현재 Deprecated 및 API Key 만료로 실행 불가
 
-### Flatform & Tech Stack & API
+### Platform & Tech Stack & API
 - Android 5.0 (Lollipop)
 - Java
 - T-map API
